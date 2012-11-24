@@ -13,41 +13,22 @@ class Conexion {
         $this->usuario = "mayraata";
         $this->password = "mayraata";
         $this->basedatos = "mayraata";
-      }
-        
-        
+    }
 
-        //echo "asf";
-    
+    function Conectar() {
 
-    /*function Conectar() {
-        if ($this->conexion != NULL) {
-            $this->conexion = mysql_connect($this->server, $this->usuario, $this->password);
-            $bool = mysql_select_db($this->basedatos, $this->conexion);
-            return $this->conexion;
-            if ($bool === False) {
-                print "can't find $mysql_database";
-            }
-        } else {
-            return $this->conexion;
-        }
-    }*/
-    
-   
-  function Conectar(){
- 
-   
-    $this->conexion = mysql_connect($this->server, $this->usuario,  $this->password);
-    mysql_select_db($this->basedatos,$this->conexion);
-    return $this->conexion;
-  }
-    
-  //Realizar una consulta o actualización en la BD
-  function EjecutarSql($consulta){  
-     $this->resconsul      = mysql_query($consulta);
- 	 $this->registroActual = mysql_fetch_array($this->resconsul);
-	 return $this->registroActual;
-  } 
+
+        $this->conexion = mysql_connect($this->server, $this->usuario, $this->password);
+        mysql_select_db($this->basedatos, $this->conexion);
+        return $this->conexion;
+    }
+
+    //Realizar una consulta o actualización en la BD
+    function EjecutarSql($consulta) {
+        $this->resconsul = mysql_query($consulta);
+        $this->registroActual = mysql_fetch_array($this->resconsul);
+        return $this->registroActual;
+    }
 
     //Devuelve el ultimo mensaje de error
     function Error() {
@@ -58,9 +39,9 @@ class Conexion {
     function Cerrar() {
         mysql_close();
     }
-    
+
     //Ejecuta sentencias
-    function executeQuery($sqr){
+    function executeQuery($sqr) {
         
     }
 
