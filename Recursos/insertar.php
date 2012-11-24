@@ -123,8 +123,6 @@ function insertar($docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino)
     $consulta = "INSERT INTO registro_viajes VALUES ";
 }
 
-
-
 $dia = date("d");
 $mes = date("m");
 $ano = date("Y");
