@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('GMT');
+
 $estaciones = array();
 $estaciones[] = "Chiminangos ";
 $estaciones[] = "Flora Industrial";
@@ -59,5 +61,21 @@ $estaciones[] = "Santa Mónica";
 $estaciones[] = "Primitivo";
 $estaciones[] = "Cien Palos";
 
+$documento = 0;
+$dia = date("d");
+$mes = date("m");
+$ano = date("Y");
+
+$fecha = $dia.".".$mes.".".$ano;
+$hora = date("h:i:s");
+$hora1 = date("h:i:s",  time()+3600);
+
+echo $fecha."<br/>";
+echo $hora."<br/>";
+echo $hora1."<br/>";
+
+function insertar($docUser,$f,$h,$minutos,$estacionOrigen,$estacionDestino){
+    
+}
 
 ?>
