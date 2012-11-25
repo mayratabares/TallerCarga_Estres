@@ -80,8 +80,8 @@
 
 
                     </div>
-                    <div class="ui-block-c" style="width:40%; ">
-                        <table border="1"  bordercolor="blue" >
+                    <div class="ui-block-c" style="width:40%; " >
+                        <table border="1"  bordercolor="blue" id="tabla">
                             <tr>
                                 <th>Cod.Viaje</th>
                                 <th>Doc. Pasajero</th>
@@ -91,22 +91,10 @@
                                 <th>Estacion Origen</th>
                                 <th>estacion Destino</th>
                                 <th>Opciones</th>
-
-
-
                             </tr>
+                            
 
-                            <?php
-                            include_once 'Recursos/Consultar.php';
-                            $obtenerViajes = new ObtenerViajes();
-
-                            $listasViajes = $obtenerViajes->obtenerListaViajes();
-
-                            for ($index = 0; $index < count($listasViajes); $index++) {
-                                echo "<tr><td>" . $listasViajes[$index][0] . "</td>
-                                    <td>" . $listasViajes[$index][1] . "</td> <td>" . $listasViajes[$index][2] . "</td><td>" . $listasViajes[$index][3] . "</td><td>" . $listasViajes[$index][4] . "</td><td>" . $listasViajes[$index][5] . "</td><td>" . $listasViajes[$index][6] . "</td></tr>";
-                            }
-                            ?>
+                          
 
                         </table>
 
