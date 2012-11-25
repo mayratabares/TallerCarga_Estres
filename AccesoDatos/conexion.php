@@ -9,10 +9,10 @@ class Conexion {
     private $conexion;
 
     function Conexion() {
-        $this->server = "mysql";
-        $this->usuario = "mayraata";
-        $this->password = "mayraata";
-        $this->basedatos = "mayraata";
+        $this->server = "localhost";
+        $this->usuario = "root";
+        $this->password = "jhonde";
+        $this->basedatos = "taller_carga";
     }
 
     function Conectar() {
