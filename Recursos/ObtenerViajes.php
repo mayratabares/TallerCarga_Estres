@@ -1,6 +1,5 @@
 <?php
-
-include_once './AccesoDatos/conexion.php';
+include_once '../AccesoDatos/conexion.php';
 
 $conexion = new Conexion();
 $conexion->Conectar();
@@ -12,5 +11,5 @@ while ($row = mysql_fetch_array($respuesta)) {
     $filas [] = $row;
 }
 $conexion->Cerrar();
-return json_encode($filas);
+echo json_encode($filas);
 ?>
