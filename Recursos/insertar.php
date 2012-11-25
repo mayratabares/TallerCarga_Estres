@@ -1,7 +1,8 @@
 <?php
+//Definimos la zona horaria para obtener la fecha y hora correctas.
+date_default_timezone_set('America/Bogota');
 
-date_default_timezone_set('GMT');
-
+//Retorna un Array con las estaciones del MIO(Masivo Integrado de Occidente)
 function crearEstaciones() {
     $estaciones = array();
     $estaciones[] = "Chiminangos ";
@@ -64,21 +65,23 @@ function crearEstaciones() {
     return $estaciones;
 }
 
-function creardocUsuarios(){
+//Retorna un Array con los documentos de los Pasajeros (documentos entre 1 y 15000)
+function crearDocUsuarios() {
     $docs = array();
     for ($d = 0; $d < 15000; $d++) {
-        $docs[] = $d+1;
+        $docs[$d] = $d + 1;
     }
     return $docs;
 }
 
-//Variables para registros
+//Variables globales obtener los registros
 $estaciones = crearEstaciones();
-$pasajeros = creardocUsuarios();
-$fecha = date("d/m/Y");
+$pasajeros = crearDocUsuarios();
 
+//Retorna un documento de Pasajero elegido aleatoriamente
+//y elimina el elemento retornado del Array global "$pasajeros"
 function getDocUsuario() {
-    $nroPasajeros = count($GLOBALS['pasajeros'])-1;
+    $nroPasajeros = count($GLOBALS['pasajeros']) - 1;
     $nroAleatorio = rand(0, $nroPasajeros);
     $salida = $GLOBALS['pasajeros'][$nroAleatorio];
     unset($GLOBALS['pasajeros'][$nroAleatorio]);
@@ -86,59 +89,82 @@ function getDocUsuario() {
     return $salida;
 }
 
-function getEstacionOrigen(){
-    $nroEstaciones = count($GLOBALS['estaciones'])-1;
+//Retorna una estacion del MIO(Masivo Integrado de Occidente)
+//elegida aleatoriamente del Array global "$estaciones"
+function getEstacionOrigen() {
+    $nroEstaciones = count($GLOBALS['estaciones']) - 1;
     $nroAleatorio = rand(0, $nroEstaciones);
     $estacion = $GLOBALS['estaciones'][$nroAleatorio];
     return $estacion;
 }
 
+//Retorna una estacion del MIO(Masivo Integrado de Occidente) elegida
+//aleatoriamente del Array global "$estaciones" diferente de "$estacionSource"
 function getEstacionDestino($estacionSource) {
     $estacion = $estacionSource;
     while ($estacion == $estacionSource) {
-        $nroEstaciones = count($GLOBALS['estaciones'])-1;
+        $nroEstaciones = count($GLOBALS['estaciones']) - 1;
         $nroAleatorio = rand(0, $nroEstaciones);
-        $estacion = $GLOBALS['estaciones'][$nroAleatorio];        
+        $estacion = $GLOBALS['estaciones'][$nroAleatorio];
     }
     return $estacion;
 }
 
-function getFecha(){
+//Retorna una fecha aleatoriamente entre un año antes o despues a la fecha actual
+function getFecha() {
     $diaEnSegundos = 86400;
     $nroAleatorio = $diaEnSegundos * rand(-365, 365);
-    return date("Y-m-d",  time() + $nroAleatorio);
-};
-
-function getHora(){
-    $horaEnSegundos = (rand(0, 60)/60) * 3600;
-    $nroAleatorio = $horaEnSegundos * rand(-24, 24);
-    return date("h:m:s",  time() + $nroAleatorio);
+    return date("Y-m-d", time() + $nroAleatorio);
 }
 
-function getRegistroAleatorio() {
-    
+;
+
+//Retorna una hora aleatoriamente entre un 24 horas antes o despues a la hora actual
+function getHora() {
+    $horaAleatorio = 0;
+    $seg = rand(0, 60);
+    $horaAleatorio += $seg;
+    $min = 60 * rand(0, 60);
+    $horaAleatorio += $min;
+    $hora = 3600 * rand(0, 24);
+    $horaAleatorio += $hora;
+    return date("h:i:s", time() + $horaAleatorio);
+}
+
+//Retorna un numero aleatorio entre 10 y 120
+function getMinutos() {
+    return rand(10, 120);
+}
+
+
+function getRegistrosAleatorios() {
+    for ($r = 0; $r < 15000; $r++) {
+        $docPasajero = getDocUsuario();
+        $fecha = getFecha();
+        $hora = getHora();
+        $minutos = getMinutos();
+        $estacionOrigen = getEstacionOrigen();
+        $estacionDestino = getEstacionDestino($estacionOrigen);
+        printf("<br/>" . ($r + 1) . ".");
+        insertar($docPasajero, $fecha, $hora, $minutos, $estacionOrigen, $estacionDestino);
+    }
 }
 
 function insertar($docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino) {
-    $consulta = "INSERT INTO registro_viajes VALUES ";
+    $consulta = "";
+    $consulta = "INSERT INTO registro_viajes(documentoPasajero,fechaEntrada,";
+    $consulta .= "horaEntrada,minutosEntrada,nombreEstacionOrigen,";
+    $consulta .= "nombreEstacionDestino) VALUES ('";
+    $consulta .= $docUser . "','";
+    $consulta .= $f . "','";
+    $consulta .= $h . "','";
+    $consulta .= $minutos . "','";
+    $consulta .= $estacionOrigen . "','";
+    $consulta .= $estacionDestino . "')";
+    printf($consulta);
 }
 
-$dia = date("d");
-$mes = date("m");
-$ano = date("Y");
-
-
-$hora = date("h:i:s");
-$hora1 = date("h:i:s", time() - 3600);
-
-echo $fecha . "<br/>";
-echo $hora . "<br/>";
-echo $hora1 . "<br/>";
-
-$a = getEstacionOrigen();
-echo "<br/>EO:". $a;
-echo "<br/>ED:". getEstacionDestino($a);
-echo "<br/>FA:". getFecha();
-echo "<br/>HA:". getHora();
+echo "<br/>----------------------------------<br/>Registros:<br/>";
+getRegistrosAleatorios();
 
 ?>
