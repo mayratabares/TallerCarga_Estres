@@ -11,6 +11,6 @@ $filas = array();
 while ($row = mysql_fetch_array($respuesta)) {
     $filas [] = $row;
 }
-$this->conexion->cerrar();
+$conexion->Cerrar();
 return json_encode($filas);
 ?>
