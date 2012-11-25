@@ -9,25 +9,22 @@
                                     <td>" . $listasViajes[$index][1] . "</td> <td>" . $listasViajes[$index][2] . "</td><td>" . $listasViajes[$index][3] . "</td><td>" . $listasViajes[$index][4] . "</td><td>" . $listasViajes[$index][5] . "</td><td>" . $listasViajes[$index][6] . "</td></tr>";
                             }
                             ?>*/
- $(function(){
-     
-      $.ajax({
-            type: 'POST',
-            url: urlPhp,
-            dataType: 'json',
-            cache: false,
-            success: function(result) {
+$(function(){
+    var urlPhp="Recursos/ObtenerViajes.php";
+    
+    $.ajax({
+        type: 'POST',
+        url: urlPhp,
+        dataType: 'json',
+        cache: false,
+        success: function(result) {
+            for(var i=0 ; i < result.length ; i++){
                 var contenidoHtml = "";
-                for(var i=0 ; i < result.length ; i++){
-                    var unaFila = result[i];
-                    contenidoHtml += "<label style=\"border: 2px solid #000; margin: 2px 2px 2px 2px; padding: 2px 2px 2px 2px;\" ><input type='checkbox' name='";
-                    contenidoHtml += unaFila[0];
-                    contenidoHtml += "'/>";
-                    contenidoHtml += unaFila[1];
-                    contenidoHtml += "</label>";                    
-                }
+                var unaFila = result[i];
+                contenidoHtml += "<tr><td>"+ unaFila[0]+"</td><td>"+unaFila[1]+"</td> <td>"+unaFila[2]+"</td><td>"+unaFila[3]+"</td><td>"+unaFila[4]+"</td><td>" +unaFila[5]+"</td><td>"+unaFila[6]+"</td></tr>";
+                $('#tabla').append(contenidoHtml);                
             }
-     
-     
- }
-
+        }     
+    }
+    );
+});
