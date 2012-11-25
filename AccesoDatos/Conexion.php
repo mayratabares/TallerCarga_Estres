@@ -38,11 +38,5 @@ class Conexion {
         mysql_close();
     }
 
-    //Ejecuta sentencias
-    function executeQuery($sqr) {
-        
-    }
-
 }
-
 ?>

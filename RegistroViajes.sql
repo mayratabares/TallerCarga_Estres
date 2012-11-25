@@ -9,3 +9,7 @@ minutosEntrada INTEGER ,
 nombreEstacionOrigen VARCHAR(50),
 nombreEstacionDestino VARCHAR(50)
 );
+
+SELECT * FROM registro_viajes;
+DELETE FROM registro_viajes;
+DROP TABLE registro_viajes;
