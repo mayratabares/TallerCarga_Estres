@@ -1,6 +1,8 @@
 <?php
+include_once '../AccesoDatos/conexion.php';
 //Definimos la zona horaria para obtener la fecha y hora correctas.
 date_default_timezone_set('America/Bogota');
+set_time_limit(0);
 
 //Retorna un Array con las estaciones del MIO(Masivo Integrado de Occidente)
 function crearEstaciones() {
@@ -137,7 +139,10 @@ function getMinutos() {
 }
 
 
-function getRegistrosAleatorios() {
+function insertarRegistrosAleatorios() {
+    printf("<br/>Inicio insertar: " . date("h:i:s"));
+    $conexion = new Conexion();
+    $conexion->Conectar();
     for ($r = 0; $r < 15000; $r++) {
         $docPasajero = getDocUsuario();
         $fecha = getFecha();
@@ -145,12 +150,13 @@ function getRegistrosAleatorios() {
         $minutos = getMinutos();
         $estacionOrigen = getEstacionOrigen();
         $estacionDestino = getEstacionDestino($estacionOrigen);
-        printf("<br/>" . ($r + 1) . ".");
-        insertar($docPasajero, $fecha, $hora, $minutos, $estacionOrigen, $estacionDestino);
+        insertar($conexion,$docPasajero, $fecha, $hora, $minutos, $estacionOrigen, $estacionDestino);
     }
+    $conexion->Cerrar();
+    printf("<br/>Fin inserta: " . date("h:i:s"));
 }
 
-function insertar($docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino) {
+function insertar($conexion,$docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino) {
     $consulta = "";
     $consulta = "INSERT INTO registro_viajes(documentoPasajero,fechaEntrada,";
     $consulta .= "horaEntrada,minutosEntrada,nombreEstacionOrigen,";
@@ -160,11 +166,9 @@ function insertar($docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino)
     $consulta .= $h . "','";
     $consulta .= $minutos . "','";
     $consulta .= $estacionOrigen . "','";
-    $consulta .= $estacionDestino . "')";
-    printf($consulta);
+    $consulta .= $estacionDestino . "')";    
+    mysql_query($consulta);    
 }
 
-echo "<br/>----------------------------------<br/>Registros:<br/>";
-getRegistrosAleatorios();
-
+insertarRegistrosAleatorios();
 ?>

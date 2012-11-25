@@ -16,8 +16,6 @@ class Conexion {
     }
 
     function Conectar() {
-
-
         $this->conexion = mysql_connect($this->server, $this->usuario, $this->password);
         mysql_select_db($this->basedatos, $this->conexion);
         return $this->conexion;
