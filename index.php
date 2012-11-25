@@ -97,7 +97,7 @@
                             </tr>
 
                             <?php
-                            include_once 'AccesoDatos/ObtenerViajes.php';
+                            include_once 'Recursos/Consultar.php';
                             $obtenerViajes = new ObtenerViajes();
 
                             $listasViajes = $obtenerViajes->obtenerListaViajes();
