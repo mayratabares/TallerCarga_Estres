@@ -38,10 +38,7 @@
                         <img src="./Recursos/mio.jpeg"  alt="mio" align="left"> 
                     </div>
 
-                    <div class="ui-block-b"  align="center" style="width:30%; margin:3%">               
-
-
-                        <form name="formMiPerfil" action="" method="post" enctype="multipart/form-data">
+                    <div class="ui-block-b"  align="center" style="width:30%; margin:3%">                  
                             <div data-role="fieldcontain" >
                                 <label for="basic" data-mini="true" >Documento Usuario:</label><br> 
                                 <input type="text" name="documento" id="documento" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
@@ -67,15 +64,12 @@
                                 <input type="text" name="estD" id="estD" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
                             </div> 
                             <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <input  data-role="button" value="Insertar" type="submit" STYLE=" background-color: #0000FF;"/> 
-                                <input  data-role="button" value="Consultar" type="submit" STYLE=" background-color: #0000FF;"/> 
-
-                                <input  data-role="button" value="Modificar" type="submit" STYLE=" background-color: #0000FF;"/> 
-
-                                <input  data-role="button" value="Eliminar" type="submit" STYLE=" background-color: #0000FF;"/> 
-
+                                <button id="btnInsertar" style="border-color: blue; ">Insertar</button>
+                                <button id="btnConsultar">Consultar</button>
+                                <button id="btnModificar">Modificar</button>
+                                <button id="btnEliminar">Eliminar</button>
                             </div>
-                        </form>
+                        
 
 
 
