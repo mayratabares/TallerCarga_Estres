@@ -35,8 +35,40 @@ function modificar(codigoViaje){
         
    function editarCampos()
    {
-       var btnModificar = $("#btnModificar");
-       var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje;
+       var doc = $('#documento').val();
+        var fecha = $('#datepicker').val();
+        var hora = $('#hora').val();
+        var min = $('#min').val();
+        var estacionOrigen = $('#estO').val();
+        var estacionDestino = $('#estD').val();
+        var arregloFecha=fecha.split("/");
+        var newFecha="";
+        var codigoViaje ="2";
+        newFecha+=arregloFecha[2];
+        newFecha+="-"+arregloFecha[0];
+        newFecha+="-"+arregloFecha[1];
+        
+        var c= camposVacios(doc, fecha, hora, min, estacionOrigen, estacionDestino);
+   
+    if(c=="true"){  
+        alert("Hay campos vacios")
+    }else{
+        
+        var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
+ 
+        alert(url);
+        $.ajax({
+            type: "POST",
+            url: url                              
+        }).done(function( msg ) {
+            alert(msg);
+        }); 
+        
+        $('btnModificar').unbind('click', editarCampos);
+        $('btnModificar').click(editarCampos);
+    }
+        
+        
        
    }     
 }

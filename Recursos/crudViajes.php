@@ -29,7 +29,7 @@ switch ($opcion) {
         $conexion->Cerrar();
         break;
     
-    case 3:
+    case 3: // traer los campos para editarlos
         $conexion = new Conexion();
         $viaje = $_GET['viaje'];
         $conexion->Conectar();
@@ -38,6 +38,21 @@ switch ($opcion) {
         $row = mysql_fetch_array($respuesta);
         $conexion->Cerrar();
         echo json_encode($row);
+        break;
+    
+    case 4: //Editar los campos
+        $conexion = new Conexion();
+        $viaje = $_GET['viaje'];
+        $doc = $_GET['doc'];
+        $fecha = $_GET['fecha'];
+        $hora = $_GET['hora'];
+        $min = $_GET['min'];
+        $estacionOrigen = $_GET['estacionOrigen'];
+        $estacionDestino = $_GET['estacionDestino'];
+        $conexion->Conectar();
+        $sql = "UPDATE registro_viajes SET doc=".documento.", fecha=".fecha.", hora=".hora.", min=".minutos.", nombreEstacionOrigen=".estacionOrigen.", nombreEstacionDestino=".estacionDestino."  WHERE codigoViaje=". $viaje.";";
+        $respuesta = mysql_query($sql);
+        $conexion->Cerrar();
         break;
         
 }
