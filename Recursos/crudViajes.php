@@ -17,7 +17,7 @@ switch ($opcion) {
         $sql = "INSERT INTO registro_viajes (documentoPasajero,fechaEntrada,horaEntrada,minutosEntrada,nombreEstacionOrigen,nombreEstacionDestino) VALUES ('".$doc."','".$fecha."','".$hora."','".$min."','".$estacionOrigen."','".$estacionDestino."')";
         $respuesta = mysql_query($sql);
         $conexion->Cerrar();
-        echo "Viaje registrado Exitosamente";
+        echo ("El viaje ser registro con exito!");
         break;
     //Eliminar viajes
     case 2:
