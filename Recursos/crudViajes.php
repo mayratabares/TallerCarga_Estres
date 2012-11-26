@@ -14,10 +14,10 @@ switch ($opcion) {
         $estacionDestino = $_GET['estacionDestino'];
         $conexion = new Conexion();
         $conexion->Conectar();
-        $sql = "INSERT INTO registro_viajes VALUES ('".$doc."','".$fecha."','".$hora."','".$min."','".$estacionOrigen."','".$estacionDestino."')";
+        $sql = "INSERT INTO registro_viajes (documentoPasajero,fechaEntrada,horaEntrada,minutosEntrada,nombreEstacionOrigen,nombreEstacionDestino) VALUES ('".$doc."','".$fecha."','".$hora."','".$min."','".$estacionOrigen."','".$estacionDestino."')";
         $respuesta = mysql_query($sql);
         $conexion->Cerrar();
-        echo $sql;
+        echo "Viaje registrado Exitosamente";
         break;
     //Eliminar viajes
     case 2:

@@ -26,29 +26,33 @@ function insertar(){
     var min = $('#min').val();
     var estacionOrigen = $('#estO').val();
     var estacionDestino = $('#estD').val();
+    var arregloFecha=fecha.split("/");
+    var newFecha="";
+    newFecha+=arregloFecha[2];
+    newFecha+="-"+arregloFecha[0];
+    newFecha+="-"+arregloFecha[1];
+    
      
    var c= camposVacios(doc, fecha, hora, min, estacionOrigen, estacionDestino);
    
-   if(c=="true"){  
-       alert("Hay campos vacios")
-   }
-   else {
-        var url="Recursos/crudViajes.php?opcion=1&doc="+doc+"&fecha="+fecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
-    $.ajax({
-        type: 'POST',
-        url: url,
-        cache: false,
-        success: function(result) {
-          alert(result);
-        }     
+    if(c=="true"){  
+        alert("Hay campos vacios")
     }
-    );
-   }
+    else {
+        var url="Recursos/crudViajes.php?opcion=1&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
+ 
+        alert(url);
+        $.ajax({
+            type: "POST",
+            url: url                              
+        }).done(function( msg ) {
+            alert(msg);
+        });
    
     
-    $('btnInsertar').unbind('click', insertar);
-    $('btnInsertar').click(insertar);
-}
+        $('btnInsertar').unbind('click', insertar);
+        $('btnInsertar').click(insertar);
+}}
 
 function camposVacios(doc,fecha,hora,min,estacionO, estacionD){
 if(doc==""||fecha==""|| hora==""|| min==""||estacionD==""||estacionO==""){

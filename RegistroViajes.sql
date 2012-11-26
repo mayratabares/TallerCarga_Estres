@@ -11,10 +11,9 @@ nombreEstacionDestino VARCHAR(50)
 );
 
 SELECT * FROM registro_viajes;
-INSERT INTO registro_viajes VALUES(1,143952205,'2012-11-23','12:30:23',5,'Nuevo Latir','Santa Monica');
-INSERT INTO registro_viajes VALUES(1,143952205,'2012-11-23','12:30:23',5,'Nuevo Latir','Santa Monica');
+INSERT INTO registro_viajes VALUES('1','143952205','2012-11-23','12:30:23','5','Nuevo Latir','Santa Monica');
 
-SELECT * FROM Estacion;
+
 CREATE TABLE Estacion (nombre VARCHAR (50));
 INSERT INTO Estacion VALUES('Chiminangos');
 INSERT INTO Estacion VALUES('Flora Industrial');
