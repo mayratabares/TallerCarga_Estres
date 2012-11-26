@@ -18,21 +18,13 @@ function modificar(codigoViaje){
 
 function insertar(){
     var doc = $('#documento').val();
-    var fecha = $('datepicker').val();
-    var hora = $('hora').val();
-    var min = $('min').val();
-    var estacionOrigen = $('estO').val();
-    var estacionDestino = $('estD').val();
+    var fecha = $('#datepicker').val();
+    var hora = $('#hora').val();
+    var min = $('#min').val();
+    var estacionOrigen = $('#estO').val();
+    var estacionDestino = $('#estD').val();
     
-    var urlPhp="Recursos/ObtenerViajes.php";
-    $.ajax({
-        type: 'POST',
-        url: urlPhp,
-        dataType: 'json',
-        cache: false,
-        success: function(){}
-    }
-    );
+   alert(doc+" "+fecha+" "+hora+" "+min+" "+estacionOrigen+" "+estacionDestino);
     
     $('btnInsertar').unbind('click', insertar);
     $('btnInsertar').click(insertar);
