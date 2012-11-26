@@ -23,36 +23,5 @@ $(function(){
             }
         }     
     }
-    );
-   
-    var listaViajes = $('tr');
-    
-    listaViajes.on('click',function(){
-        
-              alert("hola");
-        var accion = 0;
-        if($(this).text()=="Eliminar"){
-            accion = 1;
-        }else if($(this).text()=="Modificar"){
-            accion=2;
-        }
-        var id=$(this).attr('id');
-  
-        
-        if(accion==1){
-          /*var urlEliminar="Recursos/ObtenerViajes.php?opcion=2&viaje=";    
-            $.ajax({
-                type: 'POST',
-                url: urlEliminar,
-                success: function(result) {
-                }     
-            }
-            ); */
-        }
-        if(accion==2){
-            
-        }
-        });
-    
-           
+    );           
 });
