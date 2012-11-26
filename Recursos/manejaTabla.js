@@ -5,11 +5,14 @@ function eliminar(codigoViaje){
         url: url,
         cache: false,
         success: function(result) {
-           alert("El viaje numero "+codigoViaje+" ha sido eliminado");
+          alert("El viaje numero "+codigoViaje+" ha sido eliminado");
         }     
     }
     );
+       
     
+      
+ 
 }
 
 function modificar(codigoViaje){
@@ -23,16 +26,44 @@ function insertar(){
     var min = $('#min').val();
     var estacionOrigen = $('#estO').val();
     var estacionDestino = $('#estD').val();
-    
-   alert(doc+" "+fecha+" "+hora+" "+min+" "+estacionOrigen+" "+estacionDestino);
+     
+   var c= camposVacios(doc, fecha, hora, min, estacionOrigen, estacionDestino);
+   
+   if(c=="true"){  
+       alert("Hay campos vacios")
+   }
+   else {
+        var url="Recursos/crudViajes.php?opcion=1&doc="+doc+"&fecha="+fecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        cache: false,
+        success: function(result) {
+          alert(result);
+        }     
+    }
+    );
+   }
+   
     
     $('btnInsertar').unbind('click', insertar);
     $('btnInsertar').click(insertar);
 }
 
+function camposVacios(doc,fecha,hora,min,estacionO, estacionD){
+if(doc==""||fecha==""|| hora==""|| min==""||estacionD==""||estacionO==""){
+    return "true";
+}
+return "false";
+};
+
 $(function(){
     
-    var urlPhp="Recursos/ObtenerViajes.php";
+   llenarTabla();
+});
+
+function llenarTabla(){
+     var urlPhp="Recursos/ObtenerViajes.php";
     
     $.ajax({
         type: 'POST',
@@ -53,4 +84,4 @@ $(function(){
     var btnInsertar = $("#btnInsertar");
     btnInsertar.click(insertar);
     
-});
+}

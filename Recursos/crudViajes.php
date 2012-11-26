@@ -4,7 +4,20 @@ include_once '../AccesoDatos/conexion.php';
 $opcion = $_GET['opcion'];
 
 switch ($opcion) {
+    //insertar
     case 1:
+        $doc = $_GET['doc'];
+        $fecha = $_GET['fecha'];
+        $hora = $_GET['hora'];
+        $min = $_GET['min'];
+        $estacionOrigen = $_GET['estacionOrigen'];
+        $estacionDestino = $_GET['estacionDestino'];
+        $conexion = new Conexion();
+        $conexion->Conectar();
+        $sql = "INSERT INTO registro_viajes VALUES ('".$doc."','".$fecha."','".$hora."','".$min."','".$estacionOrigen."','".$estacionDestino."')";
+        $respuesta = mysql_query($sql);
+        $conexion->Cerrar();
+        echo $sql;
         break;
     //Eliminar viajes
     case 2:
@@ -16,5 +29,4 @@ switch ($opcion) {
         $conexion->Cerrar();
         break;
 }
-
 ?>
