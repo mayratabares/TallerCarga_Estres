@@ -32,6 +32,7 @@ function modificar(codigoViaje){
     }     
     
     );
+    }
         
    function editarCampos()
    {
@@ -54,7 +55,7 @@ function modificar(codigoViaje){
         alert("Hay campos vacios")
     }else{
         
-        var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
+        var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+fecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
  
         alert(url);
         $.ajax({
@@ -71,7 +72,6 @@ function modificar(codigoViaje){
         
        
    }     
-}
 
 function insertar(){
     var doc = $('#documento').val();
@@ -140,6 +140,8 @@ function llenarTabla(){
     );
         
     var btnInsertar = $("#btnInsertar");
+    var btnGuardarCambios=$("#btnModificar");
     btnInsertar.click(insertar);
+    btnGuardarCambios.click(editarCampos);
     
 }

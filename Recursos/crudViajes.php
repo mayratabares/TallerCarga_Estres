@@ -50,7 +50,7 @@ switch ($opcion) {
         $estacionOrigen = $_GET['estacionOrigen'];
         $estacionDestino = $_GET['estacionDestino'];
         $conexion->Conectar();
-        $sql = "UPDATE registro_viajes SET doc=".documento.", fecha=".fecha.", hora=".hora.", min=".minutos.", nombreEstacionOrigen=".estacionOrigen.", nombreEstacionDestino=".estacionDestino."  WHERE codigoViaje=". $viaje.";";
+        $sql = "UPDATE registro_viajes SET doc=".$doc.", fecha=".$fecha.", hora=".$hora.", min=".$min.", nombreEstacionOrigen=".$estacionOrigen.", nombreEstacionDestino=".$estacionDestino."  WHERE codigoViaje=". $viaje.";";
         $respuesta = mysql_query($sql);
         $conexion->Cerrar();
         break;
