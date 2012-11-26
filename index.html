@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
         <script src="Recursos/manejaTabla.js"></script>
 
-
     </head>
     <body>
 
@@ -39,37 +38,37 @@
                     </div>
 
                     <div class="ui-block-b"  align="center" style="width:30%; margin:3%">                  
-                            <div data-role="fieldcontain" >
-                                <label for="basic" data-mini="true" >Documento Usuario:</label><br> 
-                                <input type="text" name="documento" id="documento" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
-                            </div>
-                            <div data-role="fieldcontain" >
-                                <label for="basic" data-mini="true"  >Fecha:</label><br> 
-                                <input data-mini="true" type="text" id="datepicker" style="width:200px;height:30px;"  required="" ><br>
-                            </div> 
-                            <div data-role="fieldcontain">
-                                <label for="basic" data-mini="true" >Hora: </label> <br>
-                                <input type="text" name="hora" id="hora" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
-                            </div> 
-                            <div data-role="fieldcontain"  >
-                                <label for="basic" data-mini="true" >Minutos Espera:</label><br>
-                                <input type="text" name="min" id="min" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
-                            </div> 
-                            <div data-role="fieldcontain" >
-                                <label for="basic" data-mini="true"  >Estacion origen:</label> <br>
-                                <input type="text" name="estO" id="estO" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
-                            </div> 
-                            <div data-role="fieldcontain" >
-                                <label for="basic" data-mini="true"   >Estacion destino:</label> <br>
-                                <input type="text" name="estD" id="estD" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
-                            </div> 
-                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <button id="btnInsertar" style="border-color: blue; ">Insertar</button>
-                                <button id="btnConsultar">Consultar</button>
-                                <button id="btnModificar">Modificar</button>
-                                <button id="btnEliminar">Eliminar</button>
-                            </div>
-                        
+                        <div data-role="fieldcontain" >
+                            <label for="basic" data-mini="true" >Documento Usuario:</label><br> 
+                            <input type="text" name="documento" id="documento" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
+                        </div>
+                        <div data-role="fieldcontain" >
+                            <label for="basic" data-mini="true"  >Fecha:</label><br> 
+                            <input data-mini="true" type="text" id="datepicker" style="width:200px;height:30px;"  required="" ><br>
+                        </div> 
+                        <div data-role="fieldcontain">
+                            <label for="basic" data-mini="true" >Hora: </label> <br>
+                            <input type="text" name="hora" id="hora" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
+                        </div> 
+                        <div data-role="fieldcontain"  >
+                            <label for="basic" data-mini="true" >Minutos Espera:</label><br>
+                            <input type="text" name="min" id="min" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
+                        </div> 
+                        <div data-role="fieldcontain" >
+                            <label for="basic" data-mini="true"  >Estacion origen:</label> <br>
+                            <input type="text" name="estO" id="estO" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
+                        </div> 
+                        <div data-role="fieldcontain" >
+                            <label for="basic" data-mini="true"   >Estacion destino:</label> <br>
+                            <input type="text" name="estD" id="estD" value="" data-mini="true"   style="width:200px;height:30px;"  required=""><br>
+                        </div> 
+                        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <button id="btnInsertar">Insertar</button>
+                            <button id="btnConsultar">Consultar</button>
+                            <button id="btnModificar">Modificar</button>
+                            <button id="btnEliminar">Eliminar</button>
+                        </div>
+
 
 
 
@@ -105,13 +104,8 @@
         </div><!-- /page -->
         <script>
             $(function() {
-                $( "#datepicker" ).datepicker();
+                $( "#datepicker" ).datepicker();                
             });
         </script>
-
     </body>
-
-
-
-
 </html>
