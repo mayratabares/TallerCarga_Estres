@@ -11,5 +11,6 @@ nombreEstacionDestino VARCHAR(50)
 );
 
 SELECT * FROM registro_viajes;
+INSERT INTO registro_viajes VALUES(1,143952205,'2012-11-23','12:30:23',5,'Nuevo Latir','Santa Monica');
 DELETE FROM registro_viajes;
 DROP TABLE registro_viajes;

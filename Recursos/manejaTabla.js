@@ -1,5 +1,15 @@
 function eliminar(codigoViaje){
-    alert(codigoViaje);
+    var url="Recursos/crudViajes.php?opcion=2&viaje="+codigoViaje;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        cache: false,
+        success: function(result) {
+           alert("El viaje numero "+codigoViaje+" ha sido eliminado");
+        }     
+    }
+    );
+    
 }
 
 function modificar(codigoViaje){
@@ -14,7 +24,7 @@ function insertar(){
     var estacionOrigen = $('estO').val();
     var estacionDestino = $('estD').val();    
     
-    var urlPhp="Recursos/ObtenerViajes.php?opcion=1";
+    var urlPhp="Recursos/ObtenerViajes.php";
     $.ajax({
         type: 'POST',
         url: urlPhp,
@@ -37,7 +47,7 @@ function insertar(){
 
 $(function(){
     
-    var urlPhp="Recursos/ObtenerViajes.php?opcion=1";
+    var urlPhp="Recursos/ObtenerViajes.php";
     
     $.ajax({
         type: 'POST',
