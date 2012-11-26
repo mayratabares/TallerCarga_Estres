@@ -8,15 +8,37 @@ function eliminar(codigoViaje){
           alert("El viaje numero "+codigoViaje+" ha sido eliminado");
         }     
     }
-    );
-       
-    
-      
- 
+    );           
 }
 
 function modificar(codigoViaje){
-    alert(codigoViaje);
+    
+    var btnInsertar = $("#btnInsertar");
+    btnInsertar.attr('disabled', 'disabled');
+    var url="Recursos/crudViajes.php?opcion=3&viaje="+codigoViaje;
+     $.ajax({
+        type: 'POST',
+        url: url,
+        dataType: 'json',
+        cache: false,
+        success: function(result) {
+            $('#documento').val(result[1]);
+            $('#datepicker').val(result[2]);
+            $('#hora').val(result[3]);
+            $('#min').val(result[4]);
+            $('#estO').val(result[5]);
+            $('#estD').val(result[6]);    
+        }
+    }     
+    
+    );
+        
+   function editarCampos()
+   {
+       var btnModificar = $("#btnModificar");
+       var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje;
+       
+   }     
 }
 
 function insertar(){

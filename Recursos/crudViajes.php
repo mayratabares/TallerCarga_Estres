@@ -28,5 +28,17 @@ switch ($opcion) {
         $respuesta = mysql_query($sql);
         $conexion->Cerrar();
         break;
+    
+    case 3:
+        $conexion = new Conexion();
+        $viaje = $_GET['viaje'];
+        $conexion->Conectar();
+        $sql = "SELECT * FROM registro_viajes WHERE codigoViaje=" . $viaje;
+        $respuesta = mysql_query($sql);
+        $row = mysql_fetch_array($respuesta);
+        $conexion->Cerrar();
+        echo json_encode($row);
+        break;
+        
 }
 ?>
