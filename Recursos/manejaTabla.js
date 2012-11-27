@@ -22,9 +22,16 @@ function modificar(codigoViaje){
         dataType: 'json',
         cache: false,
         success: function(result) {
-            $('#documento').val(result[1]);
-            $('#datepicker').val(result[2]);
+            $('#idViaje').val(result[0]);
+            $('#documento').val(result[1]);            
             $('#hora').val(result[3]);
+            var newFecha="";
+            var fecha = result[2];
+            var arregloFecha=fecha.split("-");
+            newFecha+= arregloFecha[1];
+            newFecha+= "/"+arregloFecha[2];
+            newFecha+= "/"+arregloFecha[0];            
+            $('#datepicker').val(newFecha);
             $('#min').val(result[4]);
             $('#estO').val(result[5]);
             $('#estD').val(result[6]);    
@@ -35,7 +42,7 @@ function modificar(codigoViaje){
     }
         
    function editarCampos()
-   {
+   {  
        var doc = $('#documento').val();
         var fecha = $('#datepicker').val();
         var hora = $('#hora').val();
@@ -44,7 +51,7 @@ function modificar(codigoViaje){
         var estacionDestino = $('#estD').val();
         var arregloFecha=fecha.split("/");
         var newFecha="";
-        var codigoViaje ="2";
+        var codigoViaje=$('#idViaje').val();
         newFecha+=arregloFecha[2];
         newFecha+="-"+arregloFecha[0];
         newFecha+="-"+arregloFecha[1];
@@ -55,7 +62,7 @@ function modificar(codigoViaje){
         alert("Hay campos vacios")
     }else{
         
-        var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+fecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
+        var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
  
         alert(url);
         $.ajax({
