@@ -1,6 +1,6 @@
 <?php
 
-include_once '../AccesoDatos/conexion.php';
+include_once '../AccesoDatos/Conexion.php';
 
 
 $conexion = new Conexion();

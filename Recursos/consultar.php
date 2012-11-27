@@ -1,6 +1,6 @@
 <?php
 
-include_once '../AccesoDatos/conexion.php';
+include_once '../AccesoDatos/Conexion.php';
 
 $conexion = new Conexion();
 $conexion->Conectar();
@@ -19,7 +19,7 @@ printf('<table border="1"  bordercolor="red">
                                 <th>Estacion Destino</th>                                
                             </tr>');
 $acum = 0;
-while ($row = mysql_fetch_array($respuesta) && $acum != 10000) {
+while (($row = mysql_fetch_array($respuesta)) && ($acum != 15000)) {
     printf("<tr><td>" . $row[0] . "</td>
                                     <td>" . $row[1] . "</td> <td>" . $row[2] . "</td><td>" . $row[3] . "</td><td>" . $row[4] . "</td><td>" . $row[5] . "</td><td>" . $row[6] . "</td></tr>");
     $acum++;
