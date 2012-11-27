@@ -18,9 +18,11 @@ printf('<table border="1"  bordercolor="red">
                                 <th>Estacion Origen</th>
                                 <th>Estacion Destino</th>                                
                             </tr>');
-while ($row = mysql_fetch_array($respuesta)) {
+$acum = 0;
+while ($row = mysql_fetch_array($respuesta) && $acum != 10000) {
     printf("<tr><td>" . $row[0] . "</td>
                                     <td>" . $row[1] . "</td> <td>" . $row[2] . "</td><td>" . $row[3] . "</td><td>" . $row[4] . "</td><td>" . $row[5] . "</td><td>" . $row[6] . "</td></tr>");
+    $acum++;
 }
 echo '</table>';
 ?>

@@ -170,5 +170,5 @@ function insertar($conexion,$docUser, $f, $h, $minutos, $estacionOrigen, $estaci
     mysql_query($consulta);    
 }
 
-insertarRegistrosAleatorios(100);
+insertarRegistrosAleatorios(10000);
 ?>
