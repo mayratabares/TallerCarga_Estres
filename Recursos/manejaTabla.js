@@ -64,7 +64,7 @@ function modificar(codigoViaje){
         
         var url="Recursos/crudViajes.php?opcion=4&viaje="+codigoViaje+"&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
  
-        alert(url);
+ //       alert(url);
         $.ajax({
             type: "POST",
             url: url                              
@@ -75,8 +75,9 @@ function modificar(codigoViaje){
         $('btnModificar').unbind('click', editarCampos);
         $('btnModificar').click(editarCampos);
     }
+    
         
-        
+        limpiarCampos();
        
    }     
 
@@ -102,25 +103,40 @@ function insertar(){
     else {
         var url="Recursos/crudViajes.php?opcion=1&doc="+doc+"&fecha="+newFecha+"&hora="+hora+"&min="+min+"&estacionOrigen="+estacionOrigen+"&estacionDestino="+estacionDestino;
  
-        alert(url);
+      //  alert(url);
         $.ajax({
             type: "POST",
             url: url                              
         }).done(function( msg ) {
             alert(msg);
+        
         });
    
     
-        $('btnInsertar').unbind('click', insertar);
-        $('btnInsertar').click(insertar);
-}}
+        $('#btnInsertar').unbind('click', insertar);
+        $('#btnInsertar').click(insertar);
+        limpiarCampos();
+  
+}
+    
+    }
 
 function camposVacios(doc,fecha,hora,min,estacionO, estacionD){
 if(doc==""||fecha==""|| hora==""|| min==""||estacionD==""||estacionO==""){
     return "true";
 }
 return "false";
-};
+}
+
+function limpiarCampos(){
+    $('#idViaje').val("");
+    $('#documento').val("");
+    $('#datepicker').val("");
+    $('#hora').val("");
+    $('#min').val("");
+    $('#estO').val("");
+    $('#estD').val("");  
+}
 
 $(function(){
     
