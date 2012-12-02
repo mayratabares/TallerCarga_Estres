@@ -1,5 +1,5 @@
 <?php
-include_once '../AccesoDatos/conexion.php';
+include_once '../AccesoDatos/Conexion.php';
 //Definimos la zona horaria para obtener la fecha y hora correctas.
 date_default_timezone_set('America/Bogota');
 set_time_limit(0);
@@ -135,12 +135,12 @@ function getHora() {
 
 //Retorna un numero aleatorio entre 10 y 120
 function getMinutos() {
-    return rand(10, 120);
+    return rand(10, 60);
 }
 
 
 function insertarRegistrosAleatorios($nroRegistros) {
-    printf("<br/>Inicio insertar: " . date("h:i:s"));
+    printf(" - Inicio insertar: " . date("h:i:s"));
     $conexion = new Conexion();
     $conexion->Conectar();
     for ($r = 0; $r < $nroRegistros; $r++) {
@@ -153,7 +153,8 @@ function insertarRegistrosAleatorios($nroRegistros) {
         insertar($conexion,$docPasajero, $fecha, $hora, $minutos, $estacionOrigen, $estacionDestino);
     }
     $conexion->Cerrar();
-    printf("<br/>Fin inserta: " . date("h:i:s"));
+    printf("\n - Fin insertar: " . date("h:i:s"));
+    printf("\n - Se insertaron: ".$nroRegistros. " Registros");
 }
 
 function insertar($conexion,$docUser, $f, $h, $minutos, $estacionOrigen, $estacionDestino) {
@@ -170,5 +171,5 @@ function insertar($conexion,$docUser, $f, $h, $minutos, $estacionOrigen, $estaci
     mysql_query($consulta);    
 }
 
-insertarRegistrosAleatorios(100);
+insertarRegistrosAleatorios(1000);
 ?>
